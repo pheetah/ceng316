@@ -1,0 +1,21 @@
+<div>
+
+    <mat-card class="card1">
+        <mat-checkbox class="example-margin" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+        <mat-checkbox class="example-margin" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+    </mat-card>
+
+    <mat-card class="card1">
+        <div id="uploader">
+            <angular-file-uploader
+                [config]="afuConfig"
+                (ApiResponse)="DocUpload($event)">
+            </angular-file-uploader>
+        </div>
+    </mat-card>
+
+
+</div>

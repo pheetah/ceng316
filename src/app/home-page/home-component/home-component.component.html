@@ -1,1 +1,27 @@
-<button mat-raised-button> hello homee page </button>
+<mat-sidenav-container class="example-container" >
+	<mat-sidenav #sidenav style="background-color: tomato;">
+	  <mat-nav-list>
+		<a *ngFor="let route of routes[0].children"
+		   mat-list-item  
+		   [routerLink]="route.path" 
+		   (click)="sidenav.toggle()">{{route.label}} </a>
+	  </mat-nav-list>
+	</mat-sidenav>
+	<mat-sidenav-content class="content">
+	  <div style="height: auto;">
+		  <mat-toolbar color="warn">
+			<button  mat-icon-button 
+					 aria-label="Menu"
+					 (click)="sidenav.open()">
+			<mat-icon>menu</mat-icon>
+		  </button>  
+	</mat-toolbar>
+	  <router-outlet></router-outlet>
+	  </div>
+	</mat-sidenav-content>
+</mat-sidenav-container>
+<!--mat-card>
+	<p>Hey there! Welcome to the website for all the examples from material2-docs!</p>
+	<p>To get started, simply click/tap the
+		<mat-icon aria-label="Menu icon">menu</mat-icon> icon to access all the demos!</p>
+</mat-card-->

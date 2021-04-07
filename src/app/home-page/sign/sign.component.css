@@ -1,27 +1,29 @@
-.full-width {
-  width: 100%;
+.example-container .mat-form-field {
+  margin-left: 0px;
 }
 
-.shipping-card {
-  min-width: 120px;
-  margin: 20px auto;
-}
-
-.mat-radio-button {
-  display: block;
-  margin: 5px 0;
-}
-
-.row {
+.page{
+  position: relative;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
 }
 
-.col {
-  flex: 1;
-  margin-right: 20px;
+.example-container{
+  background-color: white;
+  padding: 15px;
+  margin-top: 150px;
+  border-radius: 25px;
 }
 
-.col:last-child {
-  margin-right: 0;
+.left{
+  display: inline-block;
+}
+
+.right{
+  display: inline-block;
+}
+
+.login{
+  width: 100%;
 }

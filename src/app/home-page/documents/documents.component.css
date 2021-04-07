@@ -1,0 +1,19 @@
+.card1{
+      width: 80%;
+      display: inline-block;
+      margin-top: 2%;
+      margin-left: 10%;
+      margin-right: 10%;
+      padding: 50px;
+      background-color: whitesmoke;
+}
+
+#uploader{
+      display: block;
+      margin-left: 0px;
+}
+
+.example-margin {
+      margin: 0 12px;
+      display: block;
+}
