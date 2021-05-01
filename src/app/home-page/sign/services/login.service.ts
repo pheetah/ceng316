@@ -49,6 +49,11 @@ import { catchError, tap } from "rxjs/operators";
         return obs;
     }
 
+    public Logout(){
+        localStorage.removeItem('token');
+        this.loginCheck$.next(this.loggedIn);
+    }
+
     public get loggedIn(): boolean {
         return (localStorage.getItem('token') !== null);
     }

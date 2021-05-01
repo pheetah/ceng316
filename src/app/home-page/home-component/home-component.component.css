@@ -14,3 +14,22 @@
 .content{
     background-color: gainsboro;
 }
+
+.closeDialogReject{
+    margin-right: 10px;
+    background-color: rgb(248, 105, 105) ;
+    border-radius: 10%;
+    border: 2px solid tomato;
+}
+
+.closeDialogOk{
+    margin-right: 10px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10%;
+    border: 2px solid tomato;
+}
+
+.buttonGroup{
+    margin-left: 50%;
+    padding: 10px;
+}

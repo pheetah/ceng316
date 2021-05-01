@@ -27,6 +27,13 @@
 		routerLink="/sign"
 		> sign </a>
 	  </mat-nav-list>
+	  <mat-nav-list (click)="onLogoutClick()"
+	   *ngIf="this.authService.loginCheck$ | async">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		> logout </a>
+	  </mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content class="content">
 	  <div style="height: auto;">

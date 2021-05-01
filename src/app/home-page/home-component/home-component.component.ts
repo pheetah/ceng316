@@ -1,9 +1,7 @@
-import { Component } from '@angular/core';
-import { DashboardComponent } from '../dashboard/dashboard.component';
-import { DocumentsComponent } from '../documents/documents.component';
+import { Component, Inject } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 import { AuthService } from '../sign/services/login.service';
-import { SignComponent } from '../sign/sign.component';
-
 
 @Component({
   selector: 'app-home-component',
@@ -14,21 +12,52 @@ export class HomeComponent {
 
   isLoggedin:boolean = false;
 
-  constructor(public authService:AuthService){}
+  constructor(
+    public authService:AuthService,
+    private router: Router,
+    public dialog: MatDialog
+    ){}
 
-  /*routes = [
-      { path: '', component: HomeComponent, children: [
-        { path: 'home', component: HomeComponent, label:'home' },
-        { path: 'sign', component: SignComponent, label:'sign' },
-        { path: 'dashboard', component: DashboardComponent, label:'dashboard' },
-        { path: 'documents', component: DocumentsComponent, label:'documents' }
-      ]
-    }
-  ];*/
+  onLogoutClick(){
+    const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
+      width: '350px',
+      height: '150px'
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('The dialog was closed');
+    });
+
+  }
 
   ngOnInit(){
     this.authService.LoginStatus().subscribe(val => {});
     this.isLoggedin = this.authService.loggedIn;
+  }
+
+}
+
+@Component({
+  selector: 'logout-dialog',
+  templateUrl: 'logout-dialog.html',
+  styleUrls: ['./home-component.component.css']
+})
+export class DialogOverviewExampleDialog {
+
+  constructor(
+    public dialogRef: MatDialogRef<DialogOverviewExampleDialog>,
+    private router: Router,
+    public authService:AuthService
+    ) {}
+
+  onQuitClick(): void {
+    this.authService.Logout();
+    this.router.navigate(['sign']);
+    this.dialogRef.close();
+  }
+
+  onCloseClick(){
+    this.dialogRef.close();
   }
 
 }
