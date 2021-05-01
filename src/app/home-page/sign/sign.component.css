@@ -36,3 +36,7 @@
   height: 150px;
   background-image: url("../../../assets/iyte.png");
 }
+
+.right{
+  bottom: 10px;
+}

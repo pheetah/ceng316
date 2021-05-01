@@ -1,8 +1,10 @@
-<h1 mat-dialog-title></h1>
-<div mat-dialog-content>
-  <p>Are you sure you want to quit?</p>
-</div>
-<div class="buttonGroup" mat-dialog-actions>
-  <button class="closeDialogOk" (click)="onCloseClick()" mat-button cdkFocusInitial>Cancel</button>
-  <button mat-raised-button class="closeDialogReject"  color="warn" (click)="onQuitClick()">Quit</button>
+<div class="dialogWrapper">
+  <h1 mat-dialog-title></h1>
+  <div mat-dialog-content>
+    <p class="warnMessage">Are you sure you want to quit?</p>
+  </div>
+  <div class="buttonGroup" mat-dialog-actions>
+    <button class="closeDialogOk" (click)="onCloseClick()" mat-button cdkFocusInitial>Cancel</button>
+    <button mat-raised-button class="closeDialogReject"  color="warn" (click)="onQuitClick()">Quit</button>
+  </div>
 </div>

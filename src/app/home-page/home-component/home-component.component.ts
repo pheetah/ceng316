@@ -1,5 +1,5 @@
-import { Component, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Component } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../sign/services/login.service';
 
@@ -21,12 +21,11 @@ export class HomeComponent {
   onLogoutClick(){
     const dialogRef = this.dialog.open(DialogOverviewExampleDialog, {
       width: '350px',
-      height: '150px'
+      height: '150px',
+      panelClass: 'custom-modalbox'
     });
 
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-    });
+    dialogRef.afterClosed().subscribe(result => {});
 
   }
 
