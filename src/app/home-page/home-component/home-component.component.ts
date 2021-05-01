@@ -16,7 +16,7 @@ export class HomeComponent {
 
   constructor(public authService:AuthService){}
 
-  routes = [
+  /*routes = [
       { path: '', component: HomeComponent, children: [
         { path: 'home', component: HomeComponent, label:'home' },
         { path: 'sign', component: SignComponent, label:'sign' },
@@ -24,7 +24,7 @@ export class HomeComponent {
         { path: 'documents', component: DocumentsComponent, label:'documents' }
       ]
     }
-  ];
+  ];*/
 
   ngOnInit(){
     this.authService.LoginStatus().subscribe(val => {});

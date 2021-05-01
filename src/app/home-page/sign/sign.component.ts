@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/login.service';
 import jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
-import { Route } from '@angular/compiler/src/core';
 
 @Component({
   selector: 'app-sign',
@@ -14,15 +13,21 @@ import { Route } from '@angular/compiler/src/core';
 export class SignComponent {
 
   hide:boolean = true;
+  cookieValue:any;
 
   constructor(
     private cookieService:CookieService,
     private authService:AuthService,
-    private router:Router){}
+    private router:Router,
+    ){}
+
+  ngOnInit(){
+    setTimeout(() => {
+      this.authService.loginCheck$.next(this.authService.loggedIn);
+    });
+  }
 
   email = new FormControl('', [Validators.required, Validators.email]);
-
-  cookieValue:any;
 
   signin: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.email, Validators.required ]),
@@ -45,6 +50,7 @@ export class SignComponent {
       let decoded:any = jwt_decode(val.token);
       this.authService.loginCheck$.next(true);
       this.router.navigate(['dashboard']);
+      console.log('email: ', this.emailInput?.value, 'password: ', this.passwordInput?.value);
     });
   }
 

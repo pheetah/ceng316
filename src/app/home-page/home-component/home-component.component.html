@@ -10,6 +10,13 @@
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
+		routerLink="/dashboard"
+		> dashboard </a>
+	  </mat-nav-list>
+	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
 		routerLink="/home"
 		> home </a>
 	  </mat-nav-list>
@@ -19,13 +26,6 @@
 		(click)="sidenav.toggle()"
 		routerLink="/sign"
 		> sign </a>
-	  </mat-nav-list>
-	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
-		<a 
-		mat-list-item
-		(click)="sidenav.toggle()"
-		routerLink="/dashboard"
-		> dashboard </a>
 	  </mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content class="content">
