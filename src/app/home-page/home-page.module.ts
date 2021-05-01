@@ -9,6 +9,8 @@ import { HpholderComponent } from './hpholder/hpholder.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
+import { CookieService } from 'ngx-cookie-service';
+import { AuthGuard } from './sign/guard/auth-guard';
 
 
 @NgModule({
@@ -21,6 +23,7 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
     ReactiveFormsModule,
     AngularFileUploaderModule
   ],
+  providers:[CookieService, AuthGuard],
   exports:[HomeComponent],
   bootstrap: [HomeComponent]
 })

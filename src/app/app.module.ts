@@ -8,6 +8,8 @@ import { MaterialModule } from './material/material-module';
 import { HomePageModule } from './home-page/home-page.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFileUploaderModule } from "angular-file-uploader";
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 @NgModule({
@@ -24,7 +26,7 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
     AngularFileUploaderModule
   ],
   exports:[MaterialModule],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [ AppComponent]
 })
 export class AppModule { }

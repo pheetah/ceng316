@@ -1,10 +1,31 @@
 <mat-sidenav-container class="example-container" >
 	<mat-sidenav #sidenav style="background-color: tomato;">
-	  <mat-nav-list>
+	  <!--mat-nav-list>
 		<a *ngFor="let route of routes[0].children"
 		   mat-list-item  
 		   [routerLink]="route.path" 
-		   (click)="sidenav.toggle()">{{route.label}} </a>
+		   (click)="sidenav.toggle()"> {{route.label}} </a>
+	  </mat-nav-list-->
+	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		routerLink="/home"
+		> home </a>
+	  </mat-nav-list>
+	  <mat-nav-list *ngIf="!(this.authService.loginCheck$ | async)">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		routerLink="/sign"
+		> sign </a>
+	  </mat-nav-list>
+	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		routerLink="/dashboard"
+		> dashboard </a>
 	  </mat-nav-list>
 	</mat-sidenav>
 	<mat-sidenav-content class="content">
@@ -20,8 +41,3 @@
 	  </div>
 	</mat-sidenav-content>
 </mat-sidenav-container>
-<!--mat-card>
-	<p>Hey there! Welcome to the website for all the examples from material2-docs!</p>
-	<p>To get started, simply click/tap the
-		<mat-icon aria-label="Menu icon">menu</mat-icon> icon to access all the demos!</p>
-</mat-card-->

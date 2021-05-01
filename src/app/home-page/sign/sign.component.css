@@ -27,3 +27,12 @@
 .login{
   width: 100%;
 }
+
+.left{
+  margin-right: 15px;
+  margin-top: 15px;
+  background-color: #cccccc;
+  width: 150px;
+  height: 150px;
+  background-image: url("../../../assets/iyte.png");
+}

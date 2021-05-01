@@ -12,6 +12,7 @@ import { catchError, map } from 'rxjs/operators';
 })
 export class DocumentsComponent{
   afuConfig = {
+    formatsAllowed: '.pdf,.docx,.rar',
     uploadAPI: {
       url:"https://www.filestackapi.com/api/store/S3?key=A42D55VZRDiWGuqcGukGwz",
       headers: {

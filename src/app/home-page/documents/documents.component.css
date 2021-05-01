@@ -11,6 +11,9 @@
 #uploader{
       display: block;
       margin-left: 0px;
+      padding: 10px;
+      border: 1px solid wheat;
+      border-radius: 1%;
 }
 
 .example-margin {

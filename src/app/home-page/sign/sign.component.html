@@ -2,26 +2,30 @@
 <div class="example-container">
 
     <div class="left">
-        IYTE LOGO will be replaced here
     </div>
 
     <div class= "right">
     <div>
-        <mat-form-field appearance="fill">
+        <form [formGroup]="signin">
+        <mat-form-field >
         <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
+        <input matInput placeholder="iytemail@example.com" formControlName="email" required>
         <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
+        </form>
     </div>
     <div>
-        <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input matInput placeholder="pat@example.com" [formControl]="email" required>
-        <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
+        <form [formGroup]="signin">
+            <mat-form-field >
+                <mat-label>Enter your password</mat-label>
+                <input matInput placeholder="Password" [type]="hide ? 'password' : 'text'" formControlName="password" required>
+                <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                <mat-hint *ngIf="!passwordInput.value">Enter your password</mat-hint>
+             </mat-form-field>
+           </form>
     </div>
     <div>
-        <button class= "login" mat-raised-button color="warn">Login</button>
+        <button (click)= "onLoginClick()" class= "login" mat-raised-button color="warn">Login</button>
     </div>
     </div>
 </div>
