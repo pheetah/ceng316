@@ -1,5 +1,6 @@
 <div>
-    <mat-card class="card1">
+    <!--mat-card class="card1">
+        <mat-card-content>
         <section class="example-section">
             <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
             <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
@@ -7,10 +8,22 @@
             <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
             <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
         </section>
-    </mat-card>
+    </mat-card-content>        
+    </mat-card-->
     <mat-card class="card1">
-        <div id="uploader">
-            <angular-file-uploader
+        <mat-card-content>
+            <div class="fileUploaderHeader">
+                <h2 class="example-h2">Document Submission</h2> 
+            </div>
+            <section class="example-section">
+                <div class="addDocumentHeaderWrapper">
+                    <p class="addDocumentHeader">Add Document</p> 
+                </div>
+                <mat-checkbox (change)="togglePermissionCheck($event.checked)" class="example-margin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+            </section>
+        </mat-card-content>        
+          <div id="uploader">
+            <angular-file-uploader #fileUpload
                 [config]="afuConfig"
                 (ApiResponse)="DocUpload($event)">
             </angular-file-uploader>

@@ -27,6 +27,14 @@
 		routerLink="/sign"
 		> sign </a>
 	  </mat-nav-list>
+	  <mat-nav-list
+	  *ngIf="this.authService.loginCheck$ | async">
+	   <a 
+	   mat-list-item
+	   (click)="sidenav.toggle()"
+	   routerLink="/documents"
+	   > documents </a>
+	 </mat-nav-list>
 	  <mat-nav-list (click)="onLogoutClick()"
 	   *ngIf="this.authService.loginCheck$ | async">
 		<a 
