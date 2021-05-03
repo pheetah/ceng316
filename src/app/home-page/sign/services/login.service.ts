@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
+import { ISignIn } from "../models/sign-in-model";
+
+
 
 @Injectable({
     providedIn: 'root'
@@ -12,30 +15,27 @@ import { catchError, tap } from "rxjs/operators";
   
     constructor(private http: HttpClient) { }
   
-    /*public login = () =>{
+    public login = (signin:ISignIn) =>{
+
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': ''
+            'accept': 'application/json',
         });
 
         const params = new HttpParams()
         .set('email', 'Ellipsis@iyte.edu.tr')
-        .set('password', 'string')
-        .set('user_type', 'student');
-
         
-        return this.http.post('http://127.0.0.1:8000/auth/login', {
-        headers:headers,
-        params: params
-       }).pipe(
+        return this.http.post('http://127.0.0.1:8000/auth/login', { email: signin.email, password: signin.password }).pipe(
          catchError(error => {
            throw new Error(error);
          })
-        );
-     }*/
+        ).pipe(
+            tap((result:any) => localStorage.setItem('token', result))
+        );;
+     }
 
-     public mockLogin(){
+    /* public mockLogin(){
         const response = {
          "name": "abc",
          "active": "true",
@@ -51,7 +51,7 @@ import { catchError, tap } from "rxjs/operators";
             tap((result:any) => localStorage.setItem('token', result.token))
         );
         return obs;
-    }
+    }*/
 
     public Logout(){
         localStorage.removeItem('token');

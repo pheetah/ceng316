@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { HomeComponent } from './home-component/home-component.component';
-import { HpholderComponent } from './hpholder/hpholder.component';
+import { HpholderComponent } from './students/hpholder.component';
 import { AuthGuard } from './sign/guard/auth-guard';
 import { SignComponent } from './sign/sign.component';
 

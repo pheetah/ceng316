@@ -1,49 +1,34 @@
 <div class="studentsHeader">
   Students
 </div>
-
 <div class="mat-elevation-z8">
-
   <div class="header">
     Student Information
   </div>
-
   <ng-container *ngIf="true">
-
     <table mat-table [dataSource]="dataSource">
-  
-      <!-- Name Column -->
       <ng-container matColumnDef="name">
         <th mat-header-cell *matHeaderCellDef> Name </th>
         <td mat-cell *matCellDef="let element"> {{element.student_name}} </td>
       </ng-container>
-
-      <!-- ResearchFields Column -->
       <ng-container matColumnDef="researchfields">
         <th mat-header-cell *matHeaderCellDef> Research Fields </th>
         <td mat-cell *matCellDef="let element"> {{element.branch}} </td>
       </ng-container>
-
-      <!-- Department Column -->
       <ng-container matColumnDef="department">
         <th mat-header-cell *matHeaderCellDef> Department </th>
         <td mat-cell *matCellDef="let element"> {{element.department}} </td>
       </ng-container>
-  
-  
-      <!-- Symbol Column -->
       <ng-container matColumnDef="symbol">
         <th mat-header-cell *matHeaderCellDef> Symbol </th>
         <td mat-cell *matCellDef="let element">
           <button mat-raised-button (click)="onAcceptClick($event)" color="primary">Accept</button>
           <button mat-raised-button (click)="onRejectClick($event)"  color="warn">Reject</button>
         </td>
-  
-      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-      <tr mat-row (click)= "onRowClick(i)" *matRowDef="let row; columns: displayedColumns;; let i = index"></tr>
-    </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row (click)= "onRowClick(i)" *matRowDef="let row; columns: displayedColumns;; let i = index"></tr>
+      </ng-container>
     </table>
     <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
   </ng-container>
-
-  </div>
+</div>

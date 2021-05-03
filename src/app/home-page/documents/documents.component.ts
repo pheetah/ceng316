@@ -16,7 +16,7 @@ export class DocumentsComponent{
   @ViewChild('fileUpload') private fileUpload!:  AngularFileUploaderComponent;
 
   afuConfig = {
-    formatsAllowed: '.pdf,.docx,.rar',
+    //formatsAllowed: '.pdf,.docx,.rar',
     uploadAPI: {
       url:"https://www.filestackapi.com/api/store/S3?key=A42D55VZRDiWGuqcGukGwz",
       headers: {

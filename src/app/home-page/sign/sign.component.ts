@@ -46,20 +46,24 @@ export class SignComponent {
   }
 
   onLoginClick(){
-      this.authService.mockLogin().subscribe((val:any) =>{
+    /*this.authService.mockLogin().subscribe((val:any) =>{
         if(!this.email.valid && this.signin.valid && !this.email.touched){
           let decoded:any = jwt_decode(val.token);
           this.authService.loginCheck$.next(true);
           this.router.navigate(['dashboard']);
           console.log('email: ', this.emailInput?.value, 'password: ', this.passwordInput?.value);
         }
-    }
-    /*this.authService.login().subscribe((val:any) =>{
-      if(!this.email.valid && this.signin.valid){
-        console.log('value: ', val);
-      }
-  }*/
-    );
+    });*/
+
+    this.authService.login(this.signin.value).subscribe((val:any) =>{
+        let decoded:any = jwt_decode(val);
+        console.log(decoded);
+        this.authService.loginCheck$.next(true);
+        this.router.navigate(['dashboard']);
+    });
+    
   }
+
+
 
 }
