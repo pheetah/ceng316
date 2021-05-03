@@ -1,6 +1,33 @@
-import {AfterViewInit, Component, ViewChild} from '@angular/core';
+import { ObserversModule } from '@angular/cdk/observers';
+import { Component, Inject, ViewChild} from '@angular/core';
+import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
+import { Observable, Subject } from 'rxjs';
+import { StudentsService } from './services/students-service';
+
+let response$ = new Subject<Array<IStudentsList>>();
+
+@Component({
+  selector: 'students-dialog',
+  templateUrl: 'students-dialog.html',
+  styleUrls: ['./hpholder.component.css']
+})
+export class DialogContentExample {
+  constructor( 
+    public dialogRef: MatDialogRef<DialogContentExample>,
+    @Inject(MAT_DIALOG_DATA) data:any
+  ) {
+    this.dialogContent = data;
+  }
+  
+  dialogContent:any;
+
+  onClickCloseBtn(){
+    this.dialogRef.close();
+  }
+
+}
 
 @Component({
   selector: 'app-hpholder',
@@ -9,27 +36,50 @@ import {MatTableDataSource} from '@angular/material/table';
 })
 export class HpholderComponent{
 
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource<any>(ELEMENT_DATA);
+  displayedColumns: string[] = ['name', 'researchfields', 'department', 'symbol'];
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
+  response = new Array<IStudentsList>();
+  dataSource = new MatTableDataSource<IStudentsList>(this.response);
+
+
+  constructor(
+    public dialog: MatDialog,
+    private studentsService: StudentsService
+  ){}
+
+  ngOnInit(){
+    this.studentsService.mockStudents().subscribe((val:any) => {
+      this.response = val.students;
+      response$.next(this.response);
+      this.dataSource = new MatTableDataSource<IStudentsList>(this.response);
+    })
+  }
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
   }
+
+  onRowClick(index:number){
+    let dialogConfig = new MatDialogConfig();
+    dialogConfig.data = this.response[index];
+    dialogConfig.width = "500px";
+    this.dialog.open(DialogContentExample, dialogConfig);
+  }
+
+  onAcceptClick(event:any){
+    event.stopPropagation();
+    console.log('accepted');
+  }
+
+  onRejectClick(event:any){
+    event.stopPropagation();
+    console.log('rejected');
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
+export interface IStudentsList {
+  student_name: string;
+  department: string;
+  branch: string;
 }
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079},
-  {position: 2, name: 'Helium', weight: 4.0026},
-  {position: 3, name: 'Lithium', weight: 6.941},
-  {position: 4, name: 'Beryllium', weight: 9.0122},
-  {position: 5, name: 'Boron', weight: 10.811},
-  {position: 6, name: 'Carbon', weight: 12.0107},
-];

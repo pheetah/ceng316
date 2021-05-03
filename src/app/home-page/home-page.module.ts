@@ -5,7 +5,7 @@ import { SignComponent } from './sign/sign.component';
 import { HomePageRoutingModule } from './home-page-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MaterialModule } from '../material/material-module';
-import { HpholderComponent } from './hpholder/hpholder.component';
+import { DialogContentExample, HpholderComponent } from './hpholder/hpholder.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DocumentsComponent } from './documents/documents.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
@@ -14,12 +14,18 @@ import { AuthGuard } from './sign/guard/auth-guard';
 
 
 @NgModule({
-  declarations: [HomeComponent, SignComponent, HpholderComponent, DashboardComponent, DocumentsComponent],
+  declarations: [
+    HomeComponent, 
+    SignComponent, 
+    HpholderComponent, 
+    DashboardComponent, 
+    DocumentsComponent,
+    DialogContentExample
+  ],
   imports: [
     CommonModule,
     HomePageRoutingModule,
     MaterialModule,
-    CommonModule,
     ReactiveFormsModule,
     AngularFileUploaderModule
   ],

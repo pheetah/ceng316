@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, Subject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
@@ -16,14 +16,18 @@ import { catchError, tap } from "rxjs/operators";
 
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
+            'Access-Control-Allow-Origin': ''
         });
+
+        const params = new HttpParams()
+        .set('email', 'Ellipsis@iyte.edu.tr')
+        .set('password', 'string')
+        .set('user_type', 'student');
+
         
         return this.http.post('http://127.0.0.1:8000/auth/login', {
         headers:headers,
-        params:{
-           email: 'abc@iyte.edu.tr',
-           password: 'xyz',
-        }
+        params: params
        }).pipe(
          catchError(error => {
            throw new Error(error);
@@ -62,4 +66,4 @@ import { catchError, tap } from "rxjs/operators";
         return this.loginCheck$;
     }
   
-  }  
+}  

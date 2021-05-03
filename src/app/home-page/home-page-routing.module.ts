@@ -9,7 +9,7 @@ import { SignComponent } from './sign/sign.component';
 
 export const routes:Routes = [
     { path: '', component: HomeComponent, children: [
-      { path: '', component: HpholderComponent, canActivate: [AuthGuard]},
+      { path: 'students', component: HpholderComponent, canActivate: [AuthGuard]},
       { path: 'sign', component: SignComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       { path: 'documents', component: DocumentsComponent}

@@ -5,11 +5,11 @@
         <div class= "right">
             <div>
                 <form [formGroup]="signin">
-                <mat-form-field >
-                <mat-label>Enter your email</mat-label>
-                <input matInput placeholder="iytemail@example.com" formControlName="email" required>
-                <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-                </mat-form-field>
+                    <mat-form-field >
+                    <mat-label>Enter your email</mat-label>
+                    <input matInput placeholder="iytemail@example.com" formControlName="email" required>
+                    <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+                    </mat-form-field>
                 </form>
             </div>
             <div>

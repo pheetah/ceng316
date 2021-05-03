@@ -17,8 +17,8 @@
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
-		routerLink="/home"
-		> home </a>
+		routerLink="/students"
+		> students </a>
 	  </mat-nav-list>
 	  <mat-nav-list *ngIf="!(this.authService.loginCheck$ | async)">
 		<a 

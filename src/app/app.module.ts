@@ -11,7 +11,6 @@ import { AngularFileUploaderModule } from "angular-file-uploader";
 import { CookieService } from 'ngx-cookie-service';
 
 
-
 @NgModule({
   declarations: [
     AppComponent

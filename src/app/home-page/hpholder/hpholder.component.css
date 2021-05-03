@@ -3,13 +3,13 @@ table {
 }  
 
 .mat-elevation-z8{
-    width: 70%;
+    width: 80%;
     margin: auto;
     padding: 50px;
-    background: rgb(243, 199, 199);
+    background: whitesmoke;
     margin-top: 25px;
+    border-radius: 5%;
 }
-
 
 .mat-cell {
     padding: 8px 120px 8px 0;
@@ -22,4 +22,51 @@ table {
     font-size: 20px;
     margin-left: 45px;
     margin-top: 25px;
+}
+
+.header{
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    background-color: rgb(248, 246, 241);
+    font-size: 19px;
+    color: rgb(209, 27, 27);
+    font-weight: 400;
+    font-style: normal;
+}
+
+button{
+    margin-right: 20px;
+}
+
+.mat-row:hover {
+    cursor: pointer;
+    background-color: rgb(241, 228, 202);
+}
+
+.mat-header-cell{
+    font-size: 13px;
+    font-weight: 500;
+    color: gray;
+}
+
+/*.dialogCloseBtn{
+    margin-top: 15px;
+    margin-left: 80%;
+    background-color: #f44336;
+    border: 1px solid white;
+    border-radius: 20%;
+    color: whitesmoke;
+}*/
+.dialogCloseBtn{
+    margin-left: 80%;
+}
+
+.elementsHolder{
+    margin-top: 45px;
+}
+
+hr.rounded {
+    border-top: 1px solid rgb(252, 186, 174);
+    border-radius: 2px;
 }
