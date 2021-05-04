@@ -42,7 +42,6 @@ export class HpholderComponent{
   response = new Array<IStudentsList>();
   dataSource = new MatTableDataSource<IStudentsList>(this.response);
 
-
   constructor(
     public dialog: MatDialog,
     private studentsService: StudentsService

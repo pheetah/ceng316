@@ -11,6 +11,7 @@ import { DocumentsComponent } from './documents/documents.component';
 import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './sign/guard/auth-guard';
+import { AdvisorsComponent, AdvisorsDialog } from './advisors/advisors.component';
 
 
 @NgModule({
@@ -20,7 +21,9 @@ import { AuthGuard } from './sign/guard/auth-guard';
     HpholderComponent, 
     DashboardComponent, 
     DocumentsComponent,
-    DialogContentExample
+    DialogContentExample,
+    AdvisorsComponent,
+    AdvisorsDialog
   ],
   imports: [
     CommonModule,

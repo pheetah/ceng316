@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Advisor Details</h1>
+<div class="elementsHolder">
+    <div mat-dialog-content><b>Name:</b> {{dialogContent.name}}</div>
+    <hr class="rounded">
+    <div mat-dialog-content><b>Branch:</b> {{dialogContent.branch}}</div>
+    <hr class="rounded">
+    <div mat-dialog-content><b>Department:</b> {{dialogContent.department}}</div>
+    <hr class="rounded">
+</div>
+<div mat-dialog-actions >
+  <button class="proposeBtn" (click)="onClickCloseBtn()" mat-button mat-dialog-close color="primary">Propose</button>
+  <button class="dialogCloseBtn" (click)="onClickCloseBtn()" mat-button mat-dialog-close color="warn">Close</button>
+</div>

@@ -6,10 +6,12 @@ import { HomeComponent } from './home-component/home-component.component';
 import { HpholderComponent } from './students/hpholder.component';
 import { AuthGuard } from './sign/guard/auth-guard';
 import { SignComponent } from './sign/sign.component';
+import { AdvisorsComponent } from './advisors/advisors.component';
 
 export const routes:Routes = [
     { path: '', component: HomeComponent, children: [
       { path: 'students', component: HpholderComponent, canActivate: [AuthGuard]},
+      { path: 'advisors', component: AdvisorsComponent, canActivate: [AuthGuard]},
       { path: 'sign', component: SignComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
       { path: 'documents', component: DocumentsComponent}

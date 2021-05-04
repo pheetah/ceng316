@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { AuthService } from '../sign/services/login.service';
+import jwt_decode from "jwt-decode";
+
 
 @Component({
   selector: 'app-home-component',
@@ -32,6 +34,10 @@ export class HomeComponent {
   ngOnInit(){
     this.authService.LoginStatus().subscribe(val => {});
     this.isLoggedin = this.authService.loggedIn;
+    this.authService.loginType$.next(jwt_decode<any>(localStorage.getItem('token')!).user_type);
+    this.authService.loginType$.subscribe(val => {
+      console.log(val);
+    });
   }
 
 }

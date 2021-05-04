@@ -20,6 +20,13 @@
 		routerLink="/students"
 		> students </a>
 	  </mat-nav-list>
+	  <mat-nav-list *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'student'">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		routerLink="/advisors"
+		> advisors </a>
+	  </mat-nav-list>
 	  <mat-nav-list *ngIf="!(this.authService.loginCheck$ | async)">
 		<a 
 		mat-list-item
@@ -28,7 +35,7 @@
 		> sign </a>
 	  </mat-nav-list>
 	  <mat-nav-list
-	  *ngIf="this.authService.loginCheck$ | async">
+	  *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'student'">
 	   <a 
 	   mat-list-item
 	   (click)="sidenav.toggle()"

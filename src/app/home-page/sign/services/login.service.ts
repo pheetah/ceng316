@@ -1,9 +1,9 @@
 import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { BehaviorSubject, Observable, Subject } from "rxjs";
+import { BehaviorSubject, Observable, ReplaySubject, Subject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { ISignIn } from "../models/sign-in-model";
-
+import jwt_decode from "jwt-decode";
 
 
 @Injectable({
@@ -12,6 +12,7 @@ import { ISignIn } from "../models/sign-in-model";
   export class AuthService {
 
     loginCheck$ = new BehaviorSubject<boolean>(this.loggedIn);
+    loginType$ = new ReplaySubject<any>(1);
   
     constructor(private http: HttpClient) { }
   
@@ -22,16 +23,16 @@ import { ISignIn } from "../models/sign-in-model";
             'Content-Type': 'application/json',
             'accept': 'application/json',
         });
-
-        const params = new HttpParams()
-        .set('email', 'Ellipsis@iyte.edu.tr')
         
         return this.http.post('http://127.0.0.1:8000/auth/login', { email: signin.email, password: signin.password }).pipe(
          catchError(error => {
            throw new Error(error);
          })
         ).pipe(
-            tap((result:any) => localStorage.setItem('token', result))
+            tap((result:any) => localStorage.setItem('token', result)),
+            tap((result:any) => {
+                this.loginType$.next(jwt_decode<any>(result).user_type);
+            }),
         );;
      }
 
