@@ -1,10 +1,6 @@
-import { Component, OnInit, Input, Output, EventEmitter, ViewChild } from '@angular/core';
-import { trigger, state, style, animate, transition } from '@angular/animations';
-import { HttpClient, HttpEventType } from '@angular/common/http';
-import { throwError } from 'rxjs';
-import { catchError, map } from 'rxjs/operators';
-import { AngularFileUploaderComponent } from 'angular-file-uploader';
-
+import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
+import { UploadService } from './services/uplaod-service';
 
 @Component({
   selector: 'app-documents',
@@ -13,25 +9,27 @@ import { AngularFileUploaderComponent } from 'angular-file-uploader';
 })
 export class DocumentsComponent{
 
-  @ViewChild('fileUpload') private fileUpload!:  AngularFileUploaderComponent;
+  file!:File;
+  response:any;
 
-  afuConfig = {
-    //formatsAllowed: '.pdf,.docx,.rar',
-    uploadAPI: {
-      url:"https://www.filestackapi.com/api/store/S3?key=A42D55VZRDiWGuqcGukGwz",
-      headers: {
-      "Content-Type" : "Content-Type:image/png"
-      }
-    },
-    hideSelectBtn : true,
-    replaceTexts: {
-      uploadBtn: 'Submit Document',
-    }
-  };
+  constructor(
+    private uploadService:UploadService
+  ){}
 
-  togglePermissionCheck(event:boolean){
-    this.fileUpload.hideSelectBtn = !event;
+  uploads: FormGroup = new FormGroup({});
+
+  uploadFile(event:any) {
+    this.file = (event.target).files[0];
+    console.log(this.file);
   }
+
+  upload(){
+    this.uploadService.upload(this.file).subscribe(val => {
+      console.log(val);
+    });
+  }
+
+  ngOnInit(){}
 
   DocUpload(event:any){
     console.log(event);

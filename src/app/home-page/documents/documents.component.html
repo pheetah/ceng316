@@ -19,14 +19,25 @@
                 <div class="addDocumentHeaderWrapper">
                     <p class="addDocumentHeader">Add Document</p> 
                 </div>
-                <mat-checkbox (change)="togglePermissionCheck($event.checked)" class="example-margin">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
+                <!--mat-checkbox (change)="togglePermissionCheck($event.checked)" class="example-margin">I accept that this document is my own work.</mat-checkbox-->
             </section>
         </mat-card-content>        
           <div id="uploader">
-            <angular-file-uploader #fileUpload
+            <!--angular-file-uploader #fileUpload
                 [config]="afuConfig"
                 (ApiResponse)="DocUpload($event)">
-            </angular-file-uploader>
+            </angular-file-uploader-->
+            <form [formGroup]="uploads">
+                <input 
+                hidden 
+                type="file" 
+                #uploader
+                (change)="uploadFile($event)"
+                />
+            </form>
+                <button (click)="upload()">
+                    Upload
+                </button> 
         </div>
     </mat-card>
 </div>

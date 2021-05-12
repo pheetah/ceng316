@@ -17,8 +17,6 @@ import jwt_decode from "jwt-decode";
     constructor(private http: HttpClient) { }
   
     public login = (signin:ISignIn) =>{
-
-
         let headers = new HttpHeaders({
             'Content-Type': 'application/json',
             'accept': 'application/json',
@@ -34,7 +32,7 @@ import jwt_decode from "jwt-decode";
                 this.loginType$.next(jwt_decode<any>(result).user_type);
             }),
         );;
-     }
+    }
 
     /* public mockLogin(){
         const response = {

@@ -35,11 +35,15 @@ export class AdvisorsComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.advisorsService.mockAdvisors().subscribe((val:any) => {
-      console.log(val);
-      this.response = val.advisors;
+    this.advisorsService.getAdvisors().subscribe((advisors:any) => {
+
+      this.response = advisors;
       response$.next(this.response);
       this.dataSource = new MatTableDataSource<IAdvisorsList>(this.response);
+
+      /*this.response = val.advisors;
+      response$.next(this.response);
+      this.dataSource = new MatTableDataSource<IAdvisorsList>(this.response);*/
     })
   }
 

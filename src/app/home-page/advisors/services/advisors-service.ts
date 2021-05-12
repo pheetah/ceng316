@@ -1,7 +1,7 @@
-import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { tap } from "rxjs/operators";
+import { catchError, tap } from "rxjs/operators";
 
 @Injectable({
     providedIn: 'root'
@@ -10,30 +10,22 @@ export class AdvisorsService {
   
     constructor(private http: HttpClient) { }
   
-    /*public login = () =>{
+    public getAdvisors = () =>{
 
         let headers = new HttpHeaders({
-            'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': ''
+            'Authorization': String(localStorage.getItem('token'))
         });
-
-        const params = new HttpParams()
-        .set('email', 'Ellipsis@iyte.edu.tr')
-        .set('password', 'string')
-        .set('user_type', 'student');
-
         
-        return this.http.post('http://127.0.0.1:8000/auth/login', {
-        headers:headers,
-        params: params
+        return this.http.get('http://127.0.0.1:8000/advisors', {
+        headers:headers
        }).pipe(
          catchError(error => {
            throw new Error(error);
          })
         );
-     }*/
+    }
 
-     public mockAdvisors(){
+    /* public mockAdvisors(){
         const response =   {
             "advisors": [
                 {
@@ -67,6 +59,6 @@ export class AdvisorsService {
             }, 1000);
         }).pipe();
         return obs;
-    }
+    }*/
   
 }  

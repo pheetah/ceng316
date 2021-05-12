@@ -13,7 +13,7 @@
 		routerLink="/dashboard"
 		> dashboard </a>
 	  </mat-nav-list>
-	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
+	  <mat-nav-list *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'advisor'">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"

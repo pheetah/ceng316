@@ -36,7 +36,6 @@ export class HomeComponent {
     this.isLoggedin = this.authService.loggedIn;
     this.authService.loginType$.next(jwt_decode<any>(localStorage.getItem('token')!).user_type);
     this.authService.loginType$.subscribe(val => {
-      console.log(val);
     });
   }
 
