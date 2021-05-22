@@ -12,6 +12,10 @@ import { AngularFileUploaderModule } from 'angular-file-uploader';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthGuard } from './sign/guard/auth-guard';
 import { AdvisorsComponent, AdvisorsDialog } from './advisors/advisors.component';
+import { StoreModule } from '@ngrx/store';
+import * as fromAuth from './reducers';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from './sign/state-mgmt/auth-effects';
 
 
 @NgModule({
@@ -30,7 +34,9 @@ import { AdvisorsComponent, AdvisorsDialog } from './advisors/advisors.component
     HomePageRoutingModule,
     MaterialModule,
     ReactiveFormsModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer),
+    EffectsModule.forFeature([AuthEffects])
   ],
   providers:[CookieService, AuthGuard],
   exports:[HomeComponent],

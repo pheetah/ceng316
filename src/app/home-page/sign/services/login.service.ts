@@ -3,7 +3,6 @@ import { Injectable } from "@angular/core";
 import { BehaviorSubject, Observable, ReplaySubject, Subject } from "rxjs";
 import { catchError, tap } from "rxjs/operators";
 import { ISignIn } from "../models/sign-in-model";
-import jwt_decode from "jwt-decode";
 
 
 @Injectable({
@@ -27,10 +26,7 @@ import jwt_decode from "jwt-decode";
            throw new Error(error);
          })
         ).pipe(
-            tap((result:any) => localStorage.setItem('token', result)),
-            tap((result:any) => {
-                this.loginType$.next(jwt_decode<any>(result).user_type);
-            }),
+            tap((result:any) => {}),
         );;
     }
 
@@ -52,17 +48,8 @@ import jwt_decode from "jwt-decode";
         return obs;
     }*/
 
-    public Logout(){
-        localStorage.removeItem('token');
-        this.loginCheck$.next(this.loggedIn);
-    }
-
     public get loggedIn(): boolean {
         return (localStorage.getItem('token') !== null);
-    }
-
-    public LoginStatus(){
-        return this.loginCheck$;
     }
   
 }  

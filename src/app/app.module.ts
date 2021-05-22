@@ -9,6 +9,10 @@ import { HomePageModule } from './home-page/home-page.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { CookieService } from 'ngx-cookie-service';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 
 @NgModule({
@@ -22,7 +26,10 @@ import { CookieService } from 'ngx-cookie-service';
     BrowserAnimationsModule,
     MaterialModule,
     ReactiveFormsModule,
-    AngularFileUploaderModule
+    AngularFileUploaderModule,
+    StoreModule.forRoot({}, {}),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    EffectsModule.forRoot([])
   ],
   exports:[MaterialModule],
   providers: [CookieService],

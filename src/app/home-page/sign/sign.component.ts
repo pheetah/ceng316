@@ -4,6 +4,10 @@ import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/login.service';
 import jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
+import { tap } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/reducers';
+import { login } from './state-mgmt/auth-actions';
 
 @Component({
   selector: 'app-sign',
@@ -19,6 +23,7 @@ export class SignComponent {
     private cookieService:CookieService,
     private authService:AuthService,
     private router:Router,
+    private store:Store<AppState>
     ){}
 
   ngOnInit(){
@@ -55,15 +60,14 @@ export class SignComponent {
         }
     });*/
 
-    this.authService.login(this.signin.value).subscribe((val:any) =>{
-        let decoded:any = jwt_decode(val);
-        console.log(decoded);
-        this.authService.loginCheck$.next(true);
+    this.authService.login(this.signin.value).pipe(
+      tap(token =>{
+        const LoginAction = login({token:token});
+        this.store.dispatch(LoginAction);
         this.router.navigate(['dashboard']);
-    });
+      })
+    ).subscribe((val:any) =>{});
     
   }
-
-
 
 }

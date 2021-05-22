@@ -6,28 +6,28 @@
 		   [routerLink]="route.path" 
 		   (click)="sidenav.toggle()"> {{route.label}} </a>
 	  </mat-nav-list-->
-	  <mat-nav-list *ngIf="this.authService.loginCheck$ | async">
+	  <mat-nav-list *ngIf="this.isLoggedIn$ | async">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
 		routerLink="/dashboard"
 		> dashboard </a>
 	  </mat-nav-list>
-	  <mat-nav-list *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'advisor'">
+	  <mat-nav-list *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'advisor'">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
 		routerLink="/students"
 		> students </a>
 	  </mat-nav-list>
-	  <mat-nav-list *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'student'">
+	  <mat-nav-list *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'student'">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
 		routerLink="/advisors"
 		> advisors </a>
 	  </mat-nav-list>
-	  <mat-nav-list *ngIf="!(this.authService.loginCheck$ | async)">
+	  <mat-nav-list *ngIf="!(this.isLoggedIn$ | async)">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
@@ -35,7 +35,7 @@
 		> sign </a>
 	  </mat-nav-list>
 	  <mat-nav-list
-	  *ngIf="(this.authService.loginCheck$ | async) && (this.authService.loginType$ | async) == 'student'">
+	  *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'student'">
 	   <a 
 	   mat-list-item
 	   (click)="sidenav.toggle()"
@@ -43,7 +43,7 @@
 	   > documents </a>
 	 </mat-nav-list>
 	  <mat-nav-list (click)="onLogoutClick()"
-	   *ngIf="this.authService.loginCheck$ | async">
+	   *ngIf="this.isLoggedIn$ | async">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
