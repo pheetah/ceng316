@@ -10,7 +10,6 @@ import { ISignIn } from "../models/sign-in-model";
   })
   export class AuthService {
 
-    loginCheck$ = new BehaviorSubject<boolean>(this.loggedIn);
     loginType$ = new ReplaySubject<any>(1);
   
     constructor(private http: HttpClient) { }
@@ -47,9 +46,5 @@ import { ISignIn } from "../models/sign-in-model";
         );
         return obs;
     }*/
-
-    public get loggedIn(): boolean {
-        return (localStorage.getItem('token') !== null);
-    }
   
 }  

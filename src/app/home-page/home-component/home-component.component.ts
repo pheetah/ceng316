@@ -40,31 +40,16 @@ export class HomeComponent {
   }
 
   ngOnInit(){
-
     const token = localStorage.getItem("token");
 
     if (token) {
       this.store.dispatch(login({token: token}));
     }
 
-    this.isLoggedIn$ = this.store.pipe(
-      //map((state:any) => !!state["auth"].user),
-      //distinctUntilChanged()
-      
-      
-      //select((state:any) => !!state["auth"].user)
-    
+    this.isLoggedIn$ = this.store.pipe(    
       select(LoginSelector)
     );
 
-
-
-
-    // this.authService.LoginStatus().subscribe(val => {});
-    // this.isLoggedin = this.authService.loggedIn;
-    // this.authService.loginType$.next(jwt_decode<any>(localStorage.getItem('token')!).user_type);
-    // this.authService.loginType$.subscribe(val => {
-    // });
   }
 
 }
@@ -84,7 +69,6 @@ export class DialogOverviewExampleDialog {
     ) {}
 
   onQuitClick(): void {
-    //this.authService.Logout();
     this.store.dispatch(logout());
 
     this.router.navigate(['sign']);

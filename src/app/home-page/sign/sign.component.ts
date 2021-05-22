@@ -26,11 +26,7 @@ export class SignComponent {
     private store:Store<AppState>
     ){}
 
-  ngOnInit(){
-    setTimeout(() => {
-      this.authService.loginCheck$.next(this.authService.loggedIn);
-    });
-  }
+  ngOnInit(){}
 
   email = new FormControl('', [Validators.required, Validators.email]);
 
@@ -51,23 +47,13 @@ export class SignComponent {
   }
 
   onLoginClick(){
-    /*this.authService.mockLogin().subscribe((val:any) =>{
-        if(!this.email.valid && this.signin.valid && !this.email.touched){
-          let decoded:any = jwt_decode(val.token);
-          this.authService.loginCheck$.next(true);
-          this.router.navigate(['dashboard']);
-          console.log('email: ', this.emailInput?.value, 'password: ', this.passwordInput?.value);
-        }
-    });*/
-
     this.authService.login(this.signin.value).pipe(
       tap(token =>{
         const LoginAction = login({token:token});
         this.store.dispatch(LoginAction);
-        this.router.navigate(['dashboard']);
       })
-    ).subscribe((val:any) =>{});
-    
+    ).subscribe();
+
   }
 
 }
