@@ -5,9 +5,123 @@
     margin-top: 50px;
 }
 
+.card1 mat-card{
+    height: 150px;
+}
+
+.card1 mat-card-content{
+    margin-top: 15%;
+}
+
 .card2{
     width: 350px;
     display: inline-block;
     margin-left: 50px;
     margin-top: 50px;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 1.875em;    
+}
+
+.taskTitle{
+    color: rgb(23, 163, 168);
+}
+
+.nexstepTitle{
+    color: rgb(120, 189, 17);
+}
+
+.laststepTitle{
+    color: blueviolet;
+}
+
+.info{
+    font-size: 1.285em;
+}
+
+.task{
+    font-size: 1.55em;
+}
+
+.laststep{
+    border-left: 8px solid blueviolet;
+}
+
+.nextstep{
+    border-left: 8px solid rgb(120, 189, 17);
+}
+
+.taskHeader{
+    border-left: 8px solid rgb(23, 163, 168);
+}
+
+.percentageHolder{
+    display: flex;
+}
+
+mat-progress-bar{
+    width: 70%;
+    margin-top: 4px;
+    margin-left: 20px;
+    height: 10px;
+    border-radius: 10%;
+}
+
+.currentTaskHeader{
+    color: red;
+    margin-top: 10px;
+}
+
+.cardHeader{
+    background-color: whitesmoke;
+    border-radius: 5%;
+    padding: 10px;
+}
+
+.card2{
+    width: 550px;
+}
+
+.card2 mat-card{
+    height: 350px;
+    margin-bottom: 40px;
+}
+
+.divider{
+    margin-top: 45px;
+}
+
+.example-container {
+    height: 240px;
+    overflow: auto;
+}
+
+table {
+    width: 100%;
+}
+
+tr.mat-footer-row {
+    font-weight: bold;
+}
+
+.mat-table-sticky {
+    border-top: 1px solid #e0e0e0;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
 }
