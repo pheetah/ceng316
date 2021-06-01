@@ -10,23 +10,30 @@ import { MatTableDataSource } from '@angular/material/table';
 export class DashboardComponent implements OnInit {
 
   ngOnInit(){}
-  displayedColumns = ['item', 'cost'];
-  transactions: Transaction[] = [
-    {item: 'Beach ball', cost: 4},
-    {item: 'Towel', cost: 5},
-    {item: 'Frisbee', cost: 2},
-    {item: 'Sunscreen', cost: 4},
-    {item: 'Cooler', cost: 25},
-    {item: 'Swim suit', cost: 15},
+
+  displayedColumnsLectures = ['item'];
+  displayedColumnsThesis = ['item', 'percentage'];
+  
+  transactions: Lectures[] = [
+    {item: 'CENG 4XX'},
+    {item: 'CENG 3XX'},
+    {item: 'CENG 2XX'},
+    {item: 'CENG 3XX'},
+    {item: 'CENG 3XX'},
   ];
 
-  /** Gets the total cost of all transactions. */
-  getTotalCost() {
-    return this.transactions.map(t => t.cost).reduce((acc, value) => acc + value, 0);
-  }
+  tasks: Thesis[] = [
+    {item: 'Thesis Defense Jury Appointment Form Submission', percentage: 50},
+    {item: 'Thesis Defense Jury Appointment Form Submission', percentage: 90},
+  ];
+
 }
 
-export interface Transaction {
+interface Lectures{
   item: string;
-  cost: number;
+}
+
+export interface Thesis {
+  item: string;
+  percentage: number;
 }

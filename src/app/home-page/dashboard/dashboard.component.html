@@ -1,49 +1,49 @@
 <div id="holder">
-<div class="card1">
-    <mat-card  class="laststep">
-        <div mat-card-image></div>
-        <mat-card-content>
-            <p class="title laststepTitle">
-                LAST COMPLETED STEP
-            </p>
-            <p class="info">
-                PLAGIARISM CHECK
-            </p>
-        </mat-card-content>
-    </mat-card>
-</div>
-<div class="card1">
-    <mat-card class="nextstep">
-        <div mat-card-image></div>
-        <mat-card-content>
-            <p class="title nexstepTitle">
-                NEXT STEP
-            </p>
-            <p class="info">
-                PERFORM T.S.S.
-            </p>
-        </mat-card-content>
-    </mat-card>
-</div>
-<div class="card1">
-    <mat-card class="taskHeader">
-        <div mat-card-image></div>
-        <mat-card-content>
-            <p class="title taskTitle">
-                TASKS
-            </p>
-            <div class="percentageHolder">
-                <p class="info task">
-                    60%
+    <div class="card1">
+        <mat-card  class="laststep">
+            <div mat-card-image></div>
+            <mat-card-content>
+                <p class="title laststepTitle">
+                    LAST COMPLETED STEP
                 </p>
-                <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
-            </div>
-        </mat-card-content>
-    </mat-card>
-</div>
+                <p class="info">
+                    PLAGIARISM CHECK
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card1">
+        <mat-card class="nextstep">
+            <div mat-card-image></div>
+            <mat-card-content>
+                <p class="title nexstepTitle">
+                    NEXT STEP
+                </p>
+                <p class="info">
+                    PERFORM T.S.S.
+                </p>
+            </mat-card-content>
+        </mat-card>
+    </div>
+    <div class="card1">
+        <mat-card class="taskHeader">
+            <div mat-card-image></div>
+            <mat-card-content>
+                <p class="title taskTitle">
+                    TASKS
+                </p>
+                <div class="percentageHolder">
+                    <p class="info task">
+                        60%
+                    </p>
+                    <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+                </div>
+            </mat-card-content>
+        </mat-card>
+    </div>
 </div>
 <mat-divider class="divider"></mat-divider>
-<div class="card2">
+<div id="propose" class="card2">
 <mat-card>
     <mat-card-header class="cardHeader">
         <mat-card-title class="currentTaskHeader">CURRENT TASK: PROPOSE AND UPDATE</mat-card-title>
@@ -51,24 +51,23 @@
     <div mat-card-image></div>
     <mat-card-content>
         <div class="example-container">
-            <table mat-table [dataSource]="transactions">
+            <table mat-table [dataSource]="tasks">
               <!-- Item Column -->
               <ng-container matColumnDef="item">
-                <th mat-header-cell *matHeaderCellDef> Item </th>
-                <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
-                <td mat-footer-cell *matFooterCellDef> Total </td>
+                <th mat-header-cell *matHeaderCellDef> Lecture </th>
+                <td mat-cell *matCellDef="let task"> {{task.item}} </td>
+                <td mat-footer-cell *matFooterCellDef> Lectures </td>
               </ng-container>
           
               <!-- Cost Column -->
-              <ng-container matColumnDef="cost">
-                <th mat-header-cell *matHeaderCellDef> Cost </th>
-                <td mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </td>
-                <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
+              <ng-container matColumnDef="percentage">
+                <th mat-header-cell *matHeaderCellDef> Status </th>
+                <td mat-cell *matCellDef="let task"> {{task.percentage}}%</td>
+                <td mat-footer-cell *matFooterCellDef> Forms </td>
               </ng-container>
           
-              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-              <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-header-row *matHeaderRowDef="displayedColumnsThesis"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumnsThesis;"></tr>
             </table>
           </div>
     </mat-card-content>
@@ -80,26 +79,19 @@
             <mat-card-title class="currentTaskHeader">COURSES</mat-card-title>
         </mat-card-header>
         <div mat-card-image></div>
-        <mat-card-content>
+        <mat-card-content id="tableContainer">
             <div class="example-container">
                 <table mat-table [dataSource]="transactions">
                   <!-- Item Column -->
                   <ng-container matColumnDef="item">
                     <th mat-header-cell *matHeaderCellDef> Item </th>
                     <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
-                    <td mat-footer-cell *matFooterCellDef> Total </td>
+                    <td mat-footer-cell *matFooterCellDef> </td>
                   </ng-container>
               
-                  <!-- Cost Column -->
-                  <ng-container matColumnDef="cost">
-                    <th mat-header-cell *matHeaderCellDef> Cost </th>
-                    <td mat-cell *matCellDef="let transaction"> {{transaction.cost | currency}} </td>
-                    <td mat-footer-cell *matFooterCellDef> {{getTotalCost() | currency}} </td>
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                  <tr mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></tr>
+                  <tr mat-header-row *matHeaderRowDef="displayedColumnsLectures"></tr>
+                  <tr mat-row *matRowDef="let row; columns: displayedColumnsLectures;"></tr>
+                  <tr mat-footer-row *matFooterRowDef="displayedColumnsLectures; sticky: true"></tr>
                 </table>
               </div>    
         </mat-card-content>
