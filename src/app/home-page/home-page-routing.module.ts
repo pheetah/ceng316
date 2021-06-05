@@ -12,6 +12,7 @@ import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advis
 
 export const routes:Routes = [
     { path: '', component: HomeComponent, children: [
+      { path: '', component: SignComponent},
       { path: 'students', component: HpholderComponent, canActivate: [AuthGuard]},
       { path: 'advisors', component: AdvisorsComponent, canActivate: [AuthGuard]},
       { path: 'sign', component: SignComponent},
