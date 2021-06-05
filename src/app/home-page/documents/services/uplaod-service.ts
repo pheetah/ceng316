@@ -12,9 +12,10 @@ export class UploadService{
         private http: HttpClient
     ) { }
   
-    public upload = (file:any) =>{
+    public upload = (file:any, fileStatus:string) =>{
         let formData: any = new FormData();
         formData.append("file", file);
+        formData.append("form_type", fileStatus);
 
         let headers = new HttpHeaders({
             'Authorization': String(localStorage.getItem('token'))
@@ -25,6 +26,19 @@ export class UploadService{
            throw new Error(error);
          })
         ).pipe();
-     }
+    }
+
+    public getUploadStatus = () => {
+
+        let headers = new HttpHeaders({
+            'Authorization': String(localStorage.getItem('token'))
+        });
+        
+        return this.http.get('http://127.0.0.1:8000/upload', { headers }).pipe(
+         catchError(error => {
+           throw new Error(error);
+         })
+        ).pipe();
+    }
   
 }  

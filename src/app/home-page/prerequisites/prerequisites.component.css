@@ -1,0 +1,57 @@
+.card1{
+    width: 80%;
+    display: inline-block;
+    margin-top: 2%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 50px;
+    background-color: whitesmoke;
+}
+
+.cardHeader{
+    background-color: whitesmoke;
+    border-radius: 2%;
+    padding: 10px;
+}
+
+.example-container {
+    height: 240px;
+    overflow: auto;
+}
+
+.card1 mat-card{
+    height: 350px;
+    margin-bottom: 40px;
+}
+
+#forms{
+    margin-bottom: 40px;
+}
+
+table {
+    width: 100%;
+}
+
+.studentsHeader{
+    font-family: Verdana, sans-serif;
+    font-weight: 500;
+    color: rgb(128, 92, 98);
+    font-size: 20px;
+    margin-left: 45px;
+    margin-top: 25px;
+}
+
+mat-checkbox{
+    display: block;
+    color: red;
+}
+
+.conditionsHeader{
+    font-weight: 500;
+    font-size: 20px;
+    margin-left: 25px;
+}
+
+.example-section{
+    margin-top: 15px;
+}

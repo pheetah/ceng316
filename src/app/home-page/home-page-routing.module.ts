@@ -7,6 +7,8 @@ import { HpholderComponent } from './students/hpholder.component';
 import { AuthGuard } from './sign/guard/auth-guard';
 import { SignComponent } from './sign/sign.component';
 import { AdvisorsComponent } from './advisors/advisors.component';
+import { PrerequisitesComponent } from './prerequisites/prerequisites.component';
+import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advisors.component';
 
 export const routes:Routes = [
     { path: '', component: HomeComponent, children: [
@@ -14,7 +16,9 @@ export const routes:Routes = [
       { path: 'advisors', component: AdvisorsComponent, canActivate: [AuthGuard]},
       { path: 'sign', component: SignComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},
-      { path: 'documents', component: DocumentsComponent}
+      { path: 'dashboard-advisors', component: DashboardAdvisorsComponent, canActivate: [AuthGuard]},
+      { path: 'documents', component: DocumentsComponent, canActivate: [AuthGuard]},
+      { path: 'prerequisites', component: PrerequisitesComponent, canActivate: [AuthGuard]},
     ]
   }
 ];

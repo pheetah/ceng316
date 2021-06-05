@@ -1,6 +1,7 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { MatDialog, MatDialogConfig, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subject } from 'rxjs';
 import { AdvisorsService } from './services/advisors-service';
@@ -37,6 +38,7 @@ export class AdvisorsComponent implements OnInit {
   ngOnInit(): void {
     this.advisorsService.getAdvisors().subscribe((advisors:any) => {
 
+      console.log('advisors:', advisors);
       this.response = advisors;
       response$.next(this.response);
       this.dataSource = new MatTableDataSource<IAdvisorsList>(this.response);
@@ -68,12 +70,33 @@ export class AdvisorsComponent implements OnInit {
 export class AdvisorsDialog {
   constructor( 
     public dialogRef: MatDialogRef<AdvisorsDialog>,
-    @Inject(MAT_DIALOG_DATA) data:any
+    @Inject(MAT_DIALOG_DATA) data:any,
+    private advisorsService:AdvisorsService,
+    private snackbar: MatSnackBar
   ) {
     this.dialogContent = data;
   }
   
   dialogContent:any;
+
+  onClickProposeBtn(){
+    console.log(this.dialogContent.email);
+    this.advisorsService.postAdvisors(this.dialogContent.email).subscribe((val:any) =>{
+      console.log('returned: ', val);
+      if(val.status === true){
+        this.snackbar.open('proposed', 'close', {
+          duration: 2000
+        });
+      }
+      else if(val.status === false){
+        this.snackbar.open('you cant propose multiple times', 'close', {
+          duration: 2000
+        });
+      }
+
+      this.advisorsService.getAdvisors();
+    });
+  }
 
   onClickCloseBtn(){
     this.dialogRef.close();

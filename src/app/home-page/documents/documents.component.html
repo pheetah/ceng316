@@ -1,23 +1,12 @@
 <div>
-    <!--mat-card class="card1">
-        <mat-card-content>
-        <section class="example-section">
-            <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
-            <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
-            <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
-            <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
-            <mat-checkbox class="example-margin" [checked]="true" [disabled]="true">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</mat-checkbox>
-        </section>
-    </mat-card-content>        
-    </mat-card-->
     <mat-card class="card1">
         <mat-card-content>
             <div class="fileUploaderHeader">
-                <h2 class="example-h2">Document Submission</h2> 
+                <h2 class="example-h2">Submit a Document</h2> 
             </div>
             <section class="example-section">
                 <div class="addDocumentHeaderWrapper">
-                    <p class="addDocumentHeader">Add Document</p> 
+                    <p class="addDocumentHeader">Document Submission</p> 
                 </div>
                 <!--mat-checkbox (change)="togglePermissionCheck($event.checked)" class="example-margin">I accept that this document is my own work.</mat-checkbox-->
             </section>
@@ -33,13 +22,18 @@
                 type="file" 
                 #uploader
                 (change)="uploadFile($event)"
-                />
+                />                
+                <br>  
+                <input type="checkbox" id="checking" >
+                <label for="checking"> This form is my own, except where I have acknowledged the use of works of other people work</label><br>
+                <br>  
             </form>
-                <button (click)="upload()">
+                <button id="myBtn" (click)="upload()">
                     Upload
                 </button> 
             <p class= "Ftype"> </p>
             <p class= "Fsize"> </p>
+            <p class= "Success"> </p>
         </div>
     </mat-card>
 </div>

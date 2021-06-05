@@ -6,11 +6,18 @@
 		   [routerLink]="route.path" 
 		   (click)="sidenav.toggle()"> {{route.label}} </a>
 	  </mat-nav-list-->
-	  <mat-nav-list *ngIf="this.isLoggedIn$ | async">
+	  <mat-nav-list *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'student'">
 		<a 
 		mat-list-item
 		(click)="sidenav.toggle()"
 		routerLink="/dashboard"
+		> dashboard </a>
+	  </mat-nav-list>
+	  <mat-nav-list *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'advisor'">
+		<a 
+		mat-list-item
+		(click)="sidenav.toggle()"
+		routerLink="/dashboard-advisors"
 		> dashboard </a>
 	  </mat-nav-list>
 	  <mat-nav-list *ngIf="(this.isLoggedIn$ | async) && (this.authService.loginType$ | async) == 'advisor'">

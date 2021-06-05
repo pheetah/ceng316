@@ -70,3 +70,11 @@ hr.rounded {
     border-top: 1px solid rgb(252, 186, 174);
     border-radius: 2px;
 }
+
+.accepted{
+    margin-bottom: 25px;
+}
+
+.rejectedState{
+    color: tomato;
+}

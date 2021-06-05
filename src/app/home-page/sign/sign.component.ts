@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { CookieService } from 'ngx-cookie-service';
 import { AuthService } from './services/login.service';
-import jwt_decode from "jwt-decode";
 import { Router } from '@angular/router';
 import { tap } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
@@ -20,9 +19,7 @@ export class SignComponent {
   cookieValue:any;
 
   constructor(
-    private cookieService:CookieService,
     private authService:AuthService,
-    private router:Router,
     private store:Store<AppState>
     ){}
 

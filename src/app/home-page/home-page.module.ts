@@ -16,7 +16,8 @@ import { StoreModule } from '@ngrx/store';
 import * as fromAuth from './reducers';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './sign/state-mgmt/auth-effects';
-
+import { PrerequisitesComponent } from './prerequisites/prerequisites.component';
+import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advisors.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { AuthEffects } from './sign/state-mgmt/auth-effects';
     DocumentsComponent,
     DialogContentExample,
     AdvisorsComponent,
-    AdvisorsDialog
+    AdvisorsDialog,
+    PrerequisitesComponent,
+    DashboardAdvisorsComponent
   ],
   imports: [
     CommonModule,
@@ -36,7 +39,7 @@ import { AuthEffects } from './sign/state-mgmt/auth-effects';
     ReactiveFormsModule,
     AngularFileUploaderModule,
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer),
-    EffectsModule.forFeature([AuthEffects])
+    EffectsModule.forFeature([AuthEffects]),
   ],
   providers:[CookieService, AuthGuard],
   exports:[HomeComponent],

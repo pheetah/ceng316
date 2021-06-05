@@ -54,9 +54,9 @@
             <table mat-table [dataSource]="tasks">
               <!-- Item Column -->
               <ng-container matColumnDef="item">
-                <th mat-header-cell *matHeaderCellDef> Lecture </th>
+                <th mat-header-cell *matHeaderCellDef> Forms </th>
                 <td mat-cell *matCellDef="let task"> {{task.item}} </td>
-                <td mat-footer-cell *matFooterCellDef> Lectures </td>
+                <td mat-footer-cell *matFooterCellDef> Forms </td>
               </ng-container>
           
               <!-- Cost Column -->
@@ -84,7 +84,7 @@
                 <table mat-table [dataSource]="transactions">
                   <!-- Item Column -->
                   <ng-container matColumnDef="item">
-                    <th mat-header-cell *matHeaderCellDef> Item </th>
+                    <th mat-header-cell *matHeaderCellDef> Lecture </th>
                     <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
                     <td mat-footer-cell *matFooterCellDef> </td>
                   </ng-container>

@@ -1,0 +1,32 @@
+.card1{
+    width: 350px;
+    height: 150px;
+    display: inline-block;
+    margin-left: 50px;
+    margin-top: 50px;
+}
+
+.card1 mat-card{
+    height: 150px;
+}
+
+.card1 mat-card-content{
+    margin-top: 15%;
+}
+
+.laststepTitle{
+    color: blueviolet;
+}
+
+.title{
+    font-weight: bold;
+    font-size: 1.875em;    
+}
+
+.info{
+    font-size: 1.285em;
+}
+
+.laststep{
+    border-left: 8px solid blueviolet;
+}

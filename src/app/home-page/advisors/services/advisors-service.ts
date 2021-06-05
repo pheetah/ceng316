@@ -25,6 +25,22 @@ export class AdvisorsService {
         );
     }
 
+    public postAdvisors = (email:string) =>{
+
+        let headers = new HttpHeaders({
+            'Authorization': String(localStorage.getItem('token'))
+        });
+        
+        return this.http.post('http://127.0.0.1:8000/advisors', {email : email} ,{
+        headers:headers
+       }).pipe(
+         catchError(error => {
+           throw new Error(error);
+         })
+        );
+    }
+
+
     /* public mockAdvisors(){
         const response =   {
             "advisors": [

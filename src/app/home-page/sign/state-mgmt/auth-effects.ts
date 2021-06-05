@@ -15,7 +15,11 @@ export class AuthEffects{
             tap(action => { 
                 localStorage.setItem("token", action.token);
                 this.authService.loginType$.next(jwt_decode<any>(action.token).user_type);
-                this.router.navigate(['dashboard']);
+                if(jwt_decode<any>(action.token).user_type == "student"){
+                    this.router.navigate(['dashboard']);
+                }else if(jwt_decode<any>(action.token).user_type == "advisor"){
+                    this.router.navigate(['dashboard-advisors']);
+                }
             })
         ),
         {dispatch: false}
