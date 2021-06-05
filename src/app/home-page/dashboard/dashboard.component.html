@@ -4,10 +4,10 @@
             <div mat-card-image></div>
             <mat-card-content>
                 <p class="title laststepTitle">
-                    LAST COMPLETED STEP
+                    CURRENT STEP STEP
                 </p>
                 <p class="info">
-                    PLAGIARISM CHECK
+                    {{currentStep}}
                 </p>
             </mat-card-content>
         </mat-card>
@@ -20,7 +20,7 @@
                     NEXT STEP
                 </p>
                 <p class="info">
-                    PERFORM T.S.S.
+                    {{nextStep}}
                 </p>
             </mat-card-content>
         </mat-card>
@@ -34,66 +34,11 @@
                 </p>
                 <div class="percentageHolder">
                     <p class="info task">
-                        60%
+                        {{taskProgress}}%
                     </p>
-                    <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+                    <mat-progress-bar mode="determinate" value="taskProgress"></mat-progress-bar>
                 </div>
             </mat-card-content>
         </mat-card>
     </div>
-</div>
-<mat-divider class="divider"></mat-divider>
-<div id="propose" class="card2">
-<mat-card>
-    <mat-card-header class="cardHeader">
-        <mat-card-title class="currentTaskHeader">CURRENT TASK: PROPOSE AND UPDATE</mat-card-title>
-    </mat-card-header>
-    <div mat-card-image></div>
-    <mat-card-content>
-        <div class="example-container">
-            <table mat-table [dataSource]="tasks">
-              <!-- Item Column -->
-              <ng-container matColumnDef="item">
-                <th mat-header-cell *matHeaderCellDef> Forms </th>
-                <td mat-cell *matCellDef="let task"> {{task.item}} </td>
-                <td mat-footer-cell *matFooterCellDef> Forms </td>
-              </ng-container>
-          
-              <!-- Cost Column -->
-              <ng-container matColumnDef="percentage">
-                <th mat-header-cell *matHeaderCellDef> Status </th>
-                <td mat-cell *matCellDef="let task"> {{task.percentage}}%</td>
-                <td mat-footer-cell *matFooterCellDef> Forms </td>
-              </ng-container>
-          
-              <tr mat-header-row *matHeaderRowDef="displayedColumnsThesis"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumnsThesis;"></tr>
-            </table>
-          </div>
-    </mat-card-content>
-    </mat-card>
-</div>
-<div class="card2">
-    <mat-card>
-        <mat-card-header class="cardHeader">
-            <mat-card-title class="currentTaskHeader">COURSES</mat-card-title>
-        </mat-card-header>
-        <div mat-card-image></div>
-        <mat-card-content id="tableContainer">
-            <div class="example-container">
-                <table mat-table [dataSource]="transactions">
-                  <!-- Item Column -->
-                  <ng-container matColumnDef="item">
-                    <th mat-header-cell *matHeaderCellDef> Lecture </th>
-                    <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
-                    <td mat-footer-cell *matFooterCellDef> </td>
-                  </ng-container>
-              
-                  <tr mat-header-row *matHeaderRowDef="displayedColumnsLectures"></tr>
-                  <tr mat-row *matRowDef="let row; columns: displayedColumnsLectures;"></tr>
-                  <tr mat-footer-row *matFooterRowDef="displayedColumnsLectures; sticky: true"></tr>
-                </table>
-              </div>    
-        </mat-card-content>
-    </mat-card>
 </div>

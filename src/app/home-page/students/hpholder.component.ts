@@ -57,19 +57,7 @@ export class HpholderComponent{
   ){}
 
   ngOnInit(){
-    // this.studentsService.mockStudents().subscribe((val:any) => {
-    //   console.log(val);
-    //   this.response = val.students;
-    //   this.accepted = this.response.filter((element:any) => element.state === 'accepted');
-    //   let rejected = this.response.filter((element:any) => element.state === 'pending');
-    //   this.pendingOrRejected = rejected.concat(this.response.filter((element:any) => element.state === 'rejected'));
-    //   this.dataSourceAccepted = new MatTableDataSource<IStudentsList>(this.accepted);
-    //   this.dataSourcePending = new MatTableDataSource<IStudentsList>(this.pendingOrRejected);
-    //   //response$.next(this.response);
-    // });
-
     this.studentsService.getStudents().subscribe((val:any) => {
-      console.log('getStudents:', val);
       this.response = val;
       this.accepted = this.response.accepted;
       this.pendingOrRejected = this.response.proposes;
@@ -96,14 +84,11 @@ export class HpholderComponent{
 
   onAcceptClick(event:any, index:number){
     event.stopPropagation();
-    console.log('accepted', this.pendingOrRejected[index]);
     this.studentsService.postStudents(this.pendingOrRejected[index].email, true).subscribe((val:any) => {
-      console.log('value', val);
       this.snackbar.open('accepted student', 'close', {
         duration: 2000
       });
       this.studentsService.getStudents().subscribe(val => {
-        console.log('anan', this.response);
         this.response = val;
         this.accepted = this.response.accepted;
         this.pendingOrRejected = this.response.proposes;
@@ -115,9 +100,7 @@ export class HpholderComponent{
 
   onRejectClick(event:any, index:number){
     event.stopPropagation();
-    console.log('rejected', this.pendingOrRejected[index]);
     this.studentsService.postStudents(this.pendingOrRejected[index].email, false).subscribe((val:any) => {
-      console.log('posted students: ', val);
       this.snackbar.open('rejected student', 'close', {
         duration: 2000
       });
