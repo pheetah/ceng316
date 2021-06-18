@@ -1,7 +1,8 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
-import { catchError, tap } from "rxjs/operators";
+import { catchError, delay, tap } from "rxjs/operators";
+import { IStudentsList } from "../hpholder.component";
 
 @Injectable({
     providedIn: 'root'
@@ -10,7 +11,7 @@ export class StudentsService {
   
   constructor(private http: HttpClient) { }
   
-  public getStudents = () =>{
+  public getStudents = ():Observable<any> =>{
 
     let headers = new HttpHeaders({
         'Authorization': String(localStorage.getItem('token'))
@@ -19,6 +20,7 @@ export class StudentsService {
     return this.http.get('http://127.0.0.1:8000/students', {
     headers:headers
     }).pipe(
+      delay(1000),
       catchError(error => {
         throw new Error(error);
       })

@@ -9,11 +9,12 @@ import { SignComponent } from './sign/sign.component';
 import { AdvisorsComponent } from './advisors/advisors.component';
 import { PrerequisitesComponent } from './prerequisites/prerequisites.component';
 import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advisors.component';
+import { StudentsResolver } from './students/state-mgmt/students-resolver';
 
 export const routes:Routes = [
     { path: '', component: HomeComponent, children: [
       { path: '', component: SignComponent},
-      { path: 'students', component: HpholderComponent, canActivate: [AuthGuard]},
+      { path: 'students', component: HpholderComponent, canActivate: [AuthGuard], resolve: {students: StudentsResolver}},
       { path: 'advisors', component: AdvisorsComponent, canActivate: [AuthGuard]},
       { path: 'sign', component: SignComponent},
       { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard]},

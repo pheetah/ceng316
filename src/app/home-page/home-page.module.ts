@@ -18,6 +18,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './sign/state-mgmt/auth-effects';
 import { PrerequisitesComponent } from './prerequisites/prerequisites.component';
 import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advisors.component';
+import { StudentsResolver } from './students/state-mgmt/students-resolver';
+import { StudentsEffects } from './students/state-mgmt/students-effects';
 
 @NgModule({
   declarations: [
@@ -39,9 +41,10 @@ import { DashboardAdvisorsComponent } from './dashboard-advisors/dashboard-advis
     ReactiveFormsModule,
     AngularFileUploaderModule,
     StoreModule.forFeature(fromAuth.authFeatureKey, fromAuth.authReducer),
-    EffectsModule.forFeature([AuthEffects]),
+    StoreModule.forFeature("students", fromAuth.studentsReducer),
+    EffectsModule.forFeature([AuthEffects,StudentsEffects]),
   ],
-  providers:[CookieService, AuthGuard],
+  providers:[CookieService, AuthGuard, StudentsResolver],
   exports:[HomeComponent],
   bootstrap: [HomeComponent]
 })
